@@ -4,7 +4,7 @@
     public string Title { get; }
     public string Description { get; }
 
-    void Cut();
-    void Decompose();
+    void Cut(bool activate);
+    void Decompose(bool activate);
     void EnableUniqueFeature(bool activate);
 }

@@ -12,11 +12,11 @@ public class Tab : MonoBehaviour, IPointerClickHandler
     [SerializeField] private TMP_Text _label;
     [SerializeField] private List<Color> _colors;
     
+    [HideInInspector] public UnityEvent<Tab> OnClick;
+    
     private Action<int> _callback;
     private int _id;
     private bool _isSelected;
-    
-    public UnityEvent<Tab> OnClick;
     
     public void Init(int id, string title, Action<int> action)
     {
@@ -33,8 +33,8 @@ public class Tab : MonoBehaviour, IPointerClickHandler
     {
         if (_isSelected) return;
         
-        OnClick?.Invoke(this);
         _callback?.Invoke(_id);
+        OnClick?.Invoke(this);
         ChangeState(true);
     }
 

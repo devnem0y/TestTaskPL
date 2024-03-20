@@ -25,7 +25,11 @@ public class Spawner : MonoBehaviour, ISpawner
 
     public void Clear()
     {
-        Destroy(_container.transform.GetChild(0).gameObject);
+        if (_container.transform.childCount > 0)
+        {
+            Destroy(_container.transform.GetChild(0).gameObject);
+        }
+        
         _container.Refresh();
     }
 }
