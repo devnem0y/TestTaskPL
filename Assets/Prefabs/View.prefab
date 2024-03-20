@@ -1756,7 +1756,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2137,7 +2137,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2320,6 +2320,11 @@ MonoBehaviour:
   _tabsPanel: {fileID: 5603081653441702938}
   _lblTitle: {fileID: 1889913495422656941}
   _lblDescription: {fileID: 1115559591395515460}
+  _btnCut: {fileID: 1409230982073698052}
+  _btnDecompose: {fileID: 5797962031993410753}
+  _btnColors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.45349768, g: 0.745283, b: 0.53511596, a: 1}
   _uniqueFeature: {fileID: 6423260547245389961}
   _popUpTitle: {fileID: 0}
   _rightPanel: {fileID: 5514610565994651589}
