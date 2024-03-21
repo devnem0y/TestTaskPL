@@ -8,7 +8,7 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private Spawner _spawner;
     [SerializeField] private View _view;
 
-    public ITitle View => _view;
+    public ITitle View { get; private set; }
 
     private void Awake()
     {
@@ -18,6 +18,8 @@ public class Bootstrap : MonoBehaviour
     private void Start()
     {
         _spawner.Init(_storage);
-        _view.Init(_storage.GetList(), _spawner);
+        var view = Instantiate(_view, transform);
+        view.Init(_storage.GetList(), _spawner);
+        View = view;
     }
 }
