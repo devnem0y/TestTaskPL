@@ -59,6 +59,7 @@ public class View : MonoBehaviour, ITitle
     private void UiUpdate()
     {
         _lblTitle.text = _spawner.CurrentElement.Title;
+        LayoutRebuilder.ForceRebuildLayoutImmediate(_title.GetComponent<RectTransform>());
         _lblDescription.text = _spawner.CurrentElement.Description;
         
         _uniqueFeature.onValueChanged.RemoveAllListeners();
