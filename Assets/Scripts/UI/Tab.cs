@@ -27,8 +27,7 @@ public class Tab : MonoBehaviour, IPointerClickHandler
         
         ChangeState(false);
     }
-
-
+    
     public void OnPointerClick(PointerEventData eventData)
     {
         if (_isSelected) return;

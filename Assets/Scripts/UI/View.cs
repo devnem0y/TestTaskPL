@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -58,13 +57,25 @@ public class View : MonoBehaviour, ITitle
 
     private void UiUpdate()
     {
+        UiReset();
+        
         _lblTitle.text = _spawner.CurrentElement.Title;
         LayoutRebuilder.ForceRebuildLayoutImmediate(_title.GetComponent<RectTransform>());
         _lblDescription.text = _spawner.CurrentElement.Description;
         
+        ButtonUpdate(_btnCut, _isCutClick);
+        ButtonUpdate(_btnDecompose, _isDecomposeClick);
+        
+        _uniqueFeature.onValueChanged.AddListener(_spawner.CurrentElement.EnableUniqueFeature);
+        
+        if (!_title.activeSelf) _title.SetActive(true);
+        if (!_rightPanel.activeSelf) _rightPanel.SetActive(true);
+    }
+    
+    private void UiReset()
+    {
         _uniqueFeature.onValueChanged.RemoveAllListeners();
         _uniqueFeature.isOn = false;
-        _uniqueFeature.onValueChanged.AddListener(_spawner.CurrentElement.EnableUniqueFeature);
         
         _btnCut.onClick.RemoveAllListeners();
         _btnDecompose.onClick.RemoveAllListeners();
@@ -72,40 +83,24 @@ public class View : MonoBehaviour, ITitle
         _isDecomposeClick = false;
         _btnCut.image.color = _btnColors[0];
         _btnDecompose.image.color = _btnColors[0];
-        
-        _btnCut.onClick.AddListener(() =>
+    }
+
+    private void ButtonUpdate(Button button, bool isClick)
+    {
+        button.onClick.AddListener(() =>
         {
-            if (!_isCutClick)
-            {
-                _spawner.CurrentElement.Cut(true);
-                _isCutClick = true;
-                _btnCut.image.color = _btnColors[1];
-            }
-            else
-            {
-                _spawner.CurrentElement.Cut(false);
-                _isCutClick = false;
-                _btnCut.image.color = _btnColors[0];
-            }
-        });
-        
-        _btnDecompose.onClick.AddListener(() =>
-        {
-            if (!_isDecomposeClick)
+            if (!isClick)
             {
                 _spawner.CurrentElement.Decompose(true);
-                _isDecomposeClick = true;
-                _btnDecompose.image.color = _btnColors[1];
+                isClick = true;
+                button.image.color = _btnColors[1];
             }
             else
             {
                 _spawner.CurrentElement.Decompose(false);
-                _isDecomposeClick = false;
-                _btnDecompose.image.color = _btnColors[0];
+                isClick = false;
+                button.image.color = _btnColors[0];
             }
         });
-        
-        if (!_title.activeSelf) _title.SetActive(true);
-        if (!_rightPanel.activeSelf) _rightPanel.SetActive(true);
     }
 }
