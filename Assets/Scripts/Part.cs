@@ -6,11 +6,11 @@ public class Part : MonoBehaviour
     
     private void OnMouseEnter()
     {
-        //Bootstrap.Instance.View.OnPopUpTitle(true, _title);
+        Bootstrap.Instance.View.OnPopUpTitle(true, _title);
     }
 
     private void OnMouseExit()
     {
-        //Bootstrap.Instance.View.OnPopUpTitle(false);
+        Bootstrap.Instance.View.OnPopUpTitle(false);
     }
 }

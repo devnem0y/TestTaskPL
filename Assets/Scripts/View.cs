@@ -8,6 +8,7 @@ public class View : MonoBehaviour, ITitle
 {
     [SerializeField] private Tab _tabPrefab;
     [SerializeField] private Transform _tabsPanel;
+    [SerializeField] private GameObject _title;
     [SerializeField] private TMP_Text _lblTitle;
     [SerializeField] private TMP_Text _lblDescription;
     [SerializeField] private Button _btnCut;
@@ -24,6 +25,8 @@ public class View : MonoBehaviour, ITitle
 
     private void Awake()
     {
+        _title.SetActive(false);
+        _popUpTitle.gameObject.SetActive(false);
         _rightPanel.SetActive(false);
     }
 
@@ -101,6 +104,7 @@ public class View : MonoBehaviour, ITitle
             }
         });
         
+        if (!_title.activeSelf) _title.SetActive(true);
         if (!_rightPanel.activeSelf) _rightPanel.SetActive(true);
     }
 }

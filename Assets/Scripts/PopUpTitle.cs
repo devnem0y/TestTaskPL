@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PopUpTitle : MonoBehaviour
 {
@@ -8,5 +9,11 @@ public class PopUpTitle : MonoBehaviour
     public void SetTitle(string title)
     {
         _lblTitle.text = title;
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+    }
+    
+    private void Update()
+    {
+        if (gameObject.activeSelf) transform.position = Input.mousePosition;
     }
 }
